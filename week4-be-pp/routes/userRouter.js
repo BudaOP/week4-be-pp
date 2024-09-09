@@ -8,6 +8,9 @@ const {
   deleteUser,
 } = require("../controllers/userControllers");
 
+const auth = require("../middleware/auth");
+router.use(auth);
+
 // GET /users
 router.get("/", getAllUsers);
 

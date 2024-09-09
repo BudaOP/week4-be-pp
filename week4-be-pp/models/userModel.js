@@ -1,14 +1,4 @@
-/* // The data model for user is as follows
-{
-    "name": "Matti Seppänen",
-    "password": "M@45mtg$",
-    "username": "mattis",
-    "address": "Mannerheimintie 14, 00100 Helsinki",	
-    "age": 23
-}
- */
 let userArray = [];
-
 let nextId = 1;
 
 function getAll() {
@@ -16,7 +6,6 @@ function getAll() {
 }
 
 function addOne(userData) {
-  // Check if any parameter is empty or undefined
   const {
     name,
     email,
@@ -26,6 +15,7 @@ function addOne(userData) {
     date_of_birth,
     membership_status,
   } = userData;
+
   if (
     !name ||
     !email ||
@@ -67,44 +57,9 @@ function deleteOneById(id) {
   if (item) {
     const initialLength = userArray.length;
     userArray = userArray.filter((item) => item.id !== Number(id));
-    return userArray.length < initialLength; // Indicate successful deletion if the length has decreased
+    return userArray.length < initialLength; // Return true if user was deleted
   }
-  return false; // Return false if the item was not found
-}
-
-if (require.main === module) {
-  let result = addOne({
-    name: "Matti Seppänen",
-    email: "matti@example.com",
-    password: "M@45mtg$",
-    phone_number: "+358401234567",
-    gender: "Male",
-    date_of_birth: "2000-01-15",
-    membership_status: "Active",
-  });
-  console.assert(result.length === 1, "Test 1 Failed: Should add one user");
-  console.log(result);
-  // Test 2: Add another valid user
-  result = addOne({
-    name: "Matti Nykänen",
-    email: "matti@example.com",
-    password: "M@45mtg$",
-    phone_number: "+358401234567",
-    gender: "Male",
-    date_of_birth: "2000-01-15",
-    membership_status: "Active",
-  });
-  console.assert(result.length === 2, "Test 2 Failed: Should add another user");
-  console.log(result);
-
-  console.log("getAll called:", getAll());
-
-  console.log("findById called:", findById(1));
-
-  console.log("findById called after item updated:", findById(1));
-
-  console.log("deleteOneById called:", deleteOneById(1));
-  console.log("findById called after item deleted:", findById(1));
+  return false; // Return false if the user was not found
 }
 
 const User = {

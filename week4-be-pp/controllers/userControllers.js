@@ -14,15 +14,18 @@ const createUser = (req, res) => {
     date_of_birth,
     membership_status,
   } = req.body;
-  const newUser = User.addOne(
+
+  // Pass data as an object to `addOne`
+  const newUser = User.addOne({
     name,
     email,
     password,
     phone_number,
     gender,
     date_of_birth,
-    membership_status
-  );
+    membership_status,
+  });
+
   if (newUser) {
     res.status(201).json(newUser);
   } else {
@@ -43,8 +46,10 @@ const getUserById = (req, res) => {
 const updateUser = (req, res) => {
   const userId = req.params.userId;
   const updatedData = req.body;
+
+  // Corrected check from `updateUser` to `updatedUser`
   const updatedUser = User.updateOneById(userId, updatedData);
-  if (updateUser) {
+  if (updatedUser) {
     res.json(updatedUser);
   } else {
     res.status(404).json({ message: "User not found" });

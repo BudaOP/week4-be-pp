@@ -8,6 +8,9 @@ const {
   deleteTour,
 } = require("../controllers/tourControllers");
 
+const auth = require("../middleware/auth");
+router.use(auth);
+
 // GET /tours
 router.get("/", getAllTours);
 

@@ -1,12 +1,17 @@
 const express = require("express");
 const app = express();
 const tourRouter = require("./routes/tourRouter");
-const userRouter = require("./routes/userRouter");
+const userRouter = require("./routes/userRouter"); // Ensure this file exists
+
+const morgan = require("morgan");
+
 // Middleware to parse JSON
 app.use(express.json());
-// Use the tourRouter for all /tours routes
-app.use("/tours", tourRouter);
-app.use("/users", userRouter);
+
+app.use(morgan("tiny"));
+
+app.use("/api/tours", tourRouter);
+app.use("/api/users", userRouter);
 
 const port = 4000;
 // Start the server
