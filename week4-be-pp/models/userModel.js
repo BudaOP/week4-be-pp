@@ -46,7 +46,7 @@ function findById(id) {
 function updateOneById(id, updatedData) {
   const user = findById(id);
   if (user) {
-    Object.assign(user, updatedData); // Update properties using Object.assign
+    Object.assign(user, updatedData);
     return user;
   }
   return false;
@@ -57,9 +57,9 @@ function deleteOneById(id) {
   if (item) {
     const initialLength = userArray.length;
     userArray = userArray.filter((item) => item.id !== Number(id));
-    return userArray.length < initialLength; // Return true if user was deleted
+    return userArray.length < initialLength;
   }
-  return false; // Return false if the user was not found
+  return false;
 }
 
 const User = {

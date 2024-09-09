@@ -15,7 +15,6 @@ const createUser = (req, res) => {
     membership_status,
   } = req.body;
 
-  // Pass data as an object to `addOne`
   const newUser = User.addOne({
     name,
     email,
@@ -47,7 +46,6 @@ const updateUser = (req, res) => {
   const userId = req.params.userId;
   const updatedData = req.body;
 
-  // Corrected check from `updateUser` to `updatedUser`
   const updatedUser = User.updateOneById(userId, updatedData);
   if (updatedUser) {
     res.json(updatedUser);

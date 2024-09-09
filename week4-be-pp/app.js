@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const tourRouter = require("./routes/tourRouter");
-const userRouter = require("./routes/userRouter"); // Ensure this file exists
+const userRouter = require("./routes/userRouter");
 
 const morgan = require("morgan");
 
